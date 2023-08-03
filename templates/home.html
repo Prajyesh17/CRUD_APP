@@ -1,0 +1,44 @@
+<!--this is called DOM--> <!--in this we just create a filed and input, this is not a piece we ahve intergrated yet, we havent yet put this 
+  into our main code, this html page needs to get added to the other ones, for now this is seperate, where we created 3 input places and 
+  one direct output will be shown. 
+   it takes the input in front end and edits it there itself.-->
+<!-- app.py is rendering to this page--> <!--this page is where we are entering data into the field in our front end, we give every field
+a tag,  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Welcome Home</h1>
+    <h1><input id="nameInput" placeholder="Name" /></h1>
+    <!--you gave an ID to your input tag just to idnetify the tag for what you entered into the field -->
+    <h1><input id="ageInput" placeholder="age" /></h1>
+    <h1><input id="faceInput" placeholder="face" /></h1>
+
+    <!-- The input field now has an 'id' attribute for easier access with JavaScript -->
+    <button onclick="submitName()">Submit</button>
+    <!--this is a function that is submitting the name on click -->
+    <p id="outputText"></p>
+    <!--this is a tag for what you are going to enter into the field-->
+
+    <script>
+      //inside the script tag is java script
+      function submitName() {
+        // Get the input value from the 'nameInput' element
+        const name = document.getElementById("nameInput").value; //this is getting the element id of what we entered into the field and then getting the value. the value is basically the what we enter into the field.
+        const age = document.getElementById("ageInput").value; //this is getting the element id of what we entered into the field and then getting the value. the value is basically the what we enter into the field and we put it in the name field
+        const face = document.getElementById("faceInput").value;  //this is dom manupilation 
+        // Update the 'outputText' element with the input value
+        document.getElementById(
+          "outputText"
+        ).innerText = `Hello, ${name},${age},${face}!`; //this is where our input is edited
+      }
+    </script>
+
+    <p id="outputText"></p>
+  </body>
+</html>

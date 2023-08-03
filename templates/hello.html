@@ -1,0 +1,59 @@
+<!-- this html is editing the page directly to prajyesh all the forms, if you want to edit a a name, you have to change the name in the 
+  mongo db data base, it automatically changes it to prajyesh if you click on edit. thats the only thing here, mentioned in the 
+below links.   -->
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <!-- th - table heading -->
+      <th>PEM</th>
+      <th>Age</th>
+      <th>Face</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for doc in data %}
+    <!-- when you put the curly brackets in flask in a html file ( only if you are using flask) you can code in python -->
+    <tr>
+      <!-- we used the for loop above for the data fields below -->
+      <td>{{ doc.pem }}</td>
+      <td>{{ doc.age }}</td>
+      <td>{{ doc.face }}</td>
+      <td>{{ doc.name }}</td>
+      <td>
+        <!-- <a href=
+          > -->
+        <button onclick="myFunc()" name="{{doc._id}}" class="edit">Edit</button>
+        <!-- </a
+        > -->
+        <a href="/delete?id={{ doc._id }}"><button>Delete</button></a>
+        <input type="text" id="{{ doc._id }}" />
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p><a href="/add">ADD</a></p>
+{% endblock %}
+<script>
+  // alert(doc._id);
+  // let inputElements = document.getElementsByClassName("edit");
+  let editBtns = document.getElementsByClassName("edit"); //this is a refernce to get elements by class name
+  alert(editBtns.length);
+  for (let editButton of editBtns) {
+    editButton.addEventListener("click", function (e) { //you are creating edit button, adding event listener will make it (on click something will happen, on click function is being called)
+      let id = editButton.name; //in JV we have to add let to declare a variable (we use the name value of the edit button)
+      let inputButton = document.getElementById(id); //we declared a variable here again by let called input button ( rest you will learn after DOM )
+      let data = inputButton.value; //we are accessing the value from the input field. from our page
+      alert(data); 
+
+    } 
+  )}
+
+  // for(let inputElement of inputElements){
+  //   inputElement.addEventListener("click", function(e){
+  // }
+</script>

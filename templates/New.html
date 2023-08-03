@@ -1,0 +1,44 @@
+<!--   F   L   O   W -->
+<!-- MONGO -> PYTHON (FLASK) -> HTML -> Rendered using Jinja -->
+
+<!-- this is the main html page,  -->
+
+
+<!-- forms are basically a way for us to be able to send information to the website, below we have the data fields from mongo db that are being accessed here using jinja -->
+
+<!-- we are going to use the form tab below and specify the action the form is going to take, the action is basically a url that we wont to redirect to once this form is submitted  -->
+{% block content %}
+<table>
+  <!-- {{data}} -->
+  <tbody>
+    {% for doc in data %}
+    <tr>
+      <td>{{ doc._id }}</td> 
+      <td>{{ doc.pem }}</td> <!--the data fileds in our mongo db documents  are being accessed here using jinja, this will display in our frontend, these are literellay whats being shows in our front end page.we createds a new html fro every route to learn, this is view docs. -->
+      <td>{{ doc.age }}</td> 
+      <td>{{ doc.face }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table>
+  <!-- {{data}} we are pulling the data from everywhere where data is mentioned in the python file -->
+  <tbody>  <!-- bosy fo the table -->
+    {% for doc in data %}
+    <tr> <!--this is the row (table row ) of the table, every table will have this -->
+      <td>{{ doc.likes }}</td> <!--this is the (table data) column-->
+      <td>{{ doc.type }}</td>
+    
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form action="/home" method="POST"> 
+  <!--this # is to show that we are going to stay on the same page -->
+  <p>Name:</p>
+  <p><input type="text" name="nm" /></p>
+  <!--this is the form that we created in order to render the template-->
+  <p><input type="submit" name="submit" /></p>
+</form>
+{% endblock %}
+

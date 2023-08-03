@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Data</title>
+  </head>
+  <body>
+    <h1>Hello, {{ data.name }}!</h1>
+    <p>You are {{ data.age }} years old and work as a {{ data.occupation }}.</p>
+
+    <h3>Hobbies:</h3>
+    <ul>
+      {% for hobby in data.hobbies %}
+      <li>{{ hobby }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
